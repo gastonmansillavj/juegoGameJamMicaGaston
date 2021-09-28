@@ -11,7 +11,7 @@ class Scena1 extends Phaser.Scene {
     this.load.image('gui', 'src/assets/imagenes/gui.png');
     this.load.image('guiV', 'src/assets/imagenes/guiPVerde.png');
     this.load.image('guiR', 'src/assets/imagenes/guiPRojo.png');
-    this.load.image('PlayerVerde', 'src/assets/imagenes/playerVerde.png');
+    this.load.image('PlayerVerde', 'src/assets/imagenes/PlayerVerde.png');
     this.load.image('barraVerde', 'src/assets/imagenes/barraVerde.png');
     this.load.image('barraAmarilla', 'src/assets/imagenes/barraAmarilla.png');
     this.load.image('PerdonFueUnAccidente', 'src/assets/imagenes/logoPerdon.png');

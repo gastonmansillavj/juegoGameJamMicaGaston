@@ -7,7 +7,7 @@ class Menu extends Phaser.Scene {
             preload ()
         {
           
-            this.load.image('Pasivo', 'src/assets/imagenes/playerVerde.png');
+            this.load.image('Pasivo', 'src/assets/imagenes/PlayerVerde.png');
             this.load.spritesheet('animacionVerde', 'src/assets/imagenes/playerVerde/spriteSheetVerde.png', { frameWidth: 400, frameHeight: 500 });
             this.load.spritesheet('daMano', 'src/assets/imagenes/playerVerde/daMano.png', { frameWidth: 400, frameHeight: 500 });
             this.load.spritesheet('animacionRojo', 'src/assets/imagenes/playerRojo/SpriteSheetRojo.png', { frameWidth: 500, frameHeight: 600 });
