@@ -8,10 +8,12 @@ class Menu extends Phaser.Scene {
         {
           
             this.load.image('Pasivo', 'src/assets/imagenes/PlayerVerde.png');
+            this.load.spritesheet('barrasSheet', 'src/assets/imagenes/barrasSheet.png',{ frameWidth: 418, frameHeight: 47 });
             this.load.spritesheet('animacionVerde', 'src/assets/imagenes/playerVerde/spriteSheetVerde.png', { frameWidth: 400, frameHeight: 500 });
             this.load.spritesheet('daMano', 'src/assets/imagenes/playerVerde/daMano.png', { frameWidth: 400, frameHeight: 500 });
             this.load.spritesheet('animacionRojo', 'src/assets/imagenes/playerRojo/SpriteSheetRojo.png', { frameWidth: 500, frameHeight: 600 });
             this.load.spritesheet('animacionParadoRojo', 'src/assets/imagenes/playerRojo/paradoRojo.png', { frameWidth: 500, frameHeight: 600 });
+            
             this.load.image('fondoMenu', 'src/assets/imagenes/fondoMenu.png');
             this.load.image('btnJugar', 'src/assets/imagenes/botonJugar.png');
             this.load.image('btnAyuda', 'src/assets/imagenes/ayuda.png');
@@ -37,6 +39,7 @@ class Menu extends Phaser.Scene {
     Musica.detune=-800
 */
     Sonidos=this.sound.add('seleccionar')
+    Sonidos.volume=0.1
     
     
 
@@ -164,7 +167,30 @@ class Menu extends Phaser.Scene {
                 repeat: -1
             });
             
-           
+           /////////////// animaciones Barras //////////////
+
+           this.anims.create({
+            key: 'estandar',
+            frames: this.anims.generateFrameNumbers('barrasSheet', { start: 0, end:0 }),
+            frameRate: 5,
+            repeat: -1
+        });
+
+        this.anims.create({
+            key: 'restando',
+            frames: this.anims.generateFrameNumbers('barrasSheet', { start: 1, end:2 }),
+            frameRate: 5,
+            repeat: -1
+        });
+
+        this.anims.create({
+            key: 'sumando',
+            frames: this.anims.generateFrameNumbers('barrasSheet', { start: 4, end:4 }),
+            frameRate: 5,
+            repeat: -1
+        });
+
+        
 
            
                

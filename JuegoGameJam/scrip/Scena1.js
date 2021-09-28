@@ -13,7 +13,12 @@ class Scena1 extends Phaser.Scene {
     this.load.image('guiR', 'src/assets/imagenes/guiPRojo.png');
     this.load.image('PlayerVerde', 'src/assets/imagenes/PlayerVerde.png');
     this.load.image('barraVerde', 'src/assets/imagenes/barraVerde.png');
+    
     this.load.image('barraAmarilla', 'src/assets/imagenes/barraAmarilla.png');
+    this.load.image('barraRoja', 'src/assets/imagenes/barraRoja.png');
+    this.load.image('barraColores', 'src/assets/imagenes/barraColores1.png');
+   
+    this.load.image('barraGris', 'src/assets/imagenes/barraGris.png');
     this.load.image('PerdonFueUnAccidente', 'src/assets/imagenes/logoPerdon.png');
     this.load.image('PerdonFueUnAccidenteI', 'src/assets/imagenes/logoPerdonI.png');
     this.load.image('DestruirI', 'src/assets/imagenes/teVoyADestruirI.png');
@@ -41,12 +46,15 @@ create ()
 
 
     Sonidos.GolpeAcertado = this.sound.add('GolpeAcertado')
+    Sonidos.GolpeAcertado.volume=0.2
     Sonidos.salto=this.sound.add('salto')
-    Sonidos.salto.volume=0.3
+    Sonidos.salto.volume=0.1
     Sonidos.deslizar=this.sound.add('deslizar')
-    Sonidos.deslizar.volume=0.3
+    Sonidos.deslizar.volume=0.1
     Sonidos.onda=this.sound.add('onda')
+    Sonidos.onda.volume=0.1
     Sonidos.locomotora=this.sound.add('locomotora')
+    Sonidos.locomotora.volume=0.1
     /////////// piso ///////
 
     
@@ -100,7 +108,9 @@ create ()
 
 
     ///////// barrra vida player Verde //////
-    PlayerVerde.barraVida=this.add.image(200,85,'barraVerde')
+    this.add.image(400,85,'barraGris').setScale(1,1.5)
+    PlayerVerde.barraVida=this.add.image(200,85,'barraVerde').setScale(1,1.5)
+   
     PlayerVerde.barraVida.displayOriginX=0
     
     console.log(PlayerVerde.barraVida)
@@ -133,9 +143,10 @@ create ()
      PlayerRojo.logoI=this.add.image(960,550,'DestruirI').setScale(0.7)
 
      //////// barra vida playerRojo/// 
-
-     PlayerRojo.barraVida=this.add.image(1350,85,'barraAmarilla')
-     PlayerRojo.barraVida.displayOriginX=0
+     this.add.image(1546,85,'barraGris').setScale(1,1.5)
+     PlayerRojo.barraVida=this.add.sprite(1730,85,'barrasSheet').setScale(1,1.5)
+     PlayerRojo.barraVida.displayOriginX=400
+     
     
 
  
@@ -203,8 +214,8 @@ create ()
 update(){
 
     //// prueba barra vida ////// 
-    if (PlayerVerde.vida>=400){
-        PlayerVerde.vida=400
+    if (PlayerRojo.Vida>=400){
+        PlayerRojo.Vida=400
     }
     PlayerVerde.barraVida.displayWidth=PlayerVerde.vida
     PlayerRojo.barraVida.displayWidth=PlayerRojo.Vida
@@ -275,7 +286,9 @@ if (PlayerVerdeAnim.flipX == false) {
 
     if (!GameOver) {
                     
-                       
+            if( PlayerVerde.estado!='poder') {
+                PlayerRojo.barraVida.anims.play('estandar',true)
+            }
                    
                     
                    if( PlayerVerde.estado!='RecibeGolpe') {
@@ -422,7 +435,7 @@ if (PlayerVerdeAnim.flipX == false) {
                 if(!Sonidos.onda.isPlaying){
                     Sonidos.onda.play()
                 }
-
+                
                 PlayerVerdeAnim.anims.play('poder', true)
                 PlayerVerde.setVelocityX(0)
 
@@ -430,9 +443,23 @@ if (PlayerVerdeAnim.flipX == false) {
 
                 if(PlayerRojo.estado=='hablar'||PlayerRojo.estado=='espalda'||PlayerRojo.estado=='darMano') {
                     PlayerRojo.Vida=PlayerRojo.Vida-0.3
+                    
+              
+                   
+                    if( PlayerRojoAnim.anims.currentAnim.key!='restando'){
+                        PlayerRojo.barraVida.anims.play('restando',true)
+                    }
+
+                  //  PlayerRojo.barraVida.anims.play('restando',true)
+                   
+                    
                 }
                 else {
                     PlayerRojo.Vida=PlayerRojo.Vida+0.1
+
+                    PlayerRojo.barraVida.anims.play('sumando',true)
+                    //PlayerRojo.barraVida.anims.play('sumando',true)
+                   
                 }
             }
 
@@ -468,7 +495,7 @@ if (PlayerVerdeAnim.flipX == false) {
     if (PlayerRojo.estado=='parado'){
 
        // console.log('parado')
-        this.tomaDecision(Phaser.Math.Between(0,2))
+        this.tomaDecision(Phaser.Math.Between(0,3))
         PlayerRojo.setScale(1.2,0.8)
         //this.tomaDecision(0)
 
@@ -752,33 +779,36 @@ tomaDecision(resultado){
     
     if (0==resultado){
 
-        PlayerRojo.estado='hablar'
-       // tiempoEspera=tiempoDeJuego+2
-        TiempoMiliseg=this.time.now+2000
+PlayerRojo.estado='encarar'
+       
+if (PlayerRojo.x<=PlayerVerde.x) {
+    
+    PlayerRojo.setVelocityX (800)
+ 
+} else {
+    
+   PlayerRojo.setVelocityX (-800)
+   
 
-      
+}
+
+TiempoMiliseg=this.time.now+1500
     }
     else if (1==resultado){
 
+PlayerRojo.estado='hablar'
+// tiempoEspera=tiempoDeJuego+2
+ TiempoMiliseg=this.time.now+2000
+
+       
+    }
+     else {
+
+        
+      
         PlayerRojo.estado='caminar'
        // tiempoEspera=tiempoDeJuego+3
        TiempoMiliseg=this.time.now+2000
-    }
-     else {
-        PlayerRojo.estado='encarar'
-       
-        if (PlayerRojo.x<=PlayerVerde.x) {
-            
-            PlayerRojo.setVelocityX (800)
-         
-        } else {
-            
-           PlayerRojo.setVelocityX (-800)
-           
-
-        }
-
-        TiempoMiliseg=this.time.now+1500
 
      }
 
