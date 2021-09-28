@@ -8,6 +8,7 @@ class Menu extends Phaser.Scene {
         {
           
             this.load.image('Pasivo', 'src/assets/imagenes/PlayerVerde.png');
+            this.load.image('sereno', 'src/assets/imagenes/sereno.png');
             this.load.spritesheet('barrasSheet', 'src/assets/imagenes/barrasSheet.png',{ frameWidth: 418, frameHeight: 47 });
             this.load.spritesheet('animacionVerde', 'src/assets/imagenes/playerVerde/spriteSheetVerde.png', { frameWidth: 400, frameHeight: 500 });
             this.load.spritesheet('daMano', 'src/assets/imagenes/playerVerde/daMano.png', { frameWidth: 400, frameHeight: 500 });
@@ -48,6 +49,8 @@ class Menu extends Phaser.Scene {
             GameOver=false;
             /// fondo///////
             this.add.image(964,535,'fondoMenu')
+            this.add.image(964,200,'sereno')
+
 
             PlayerVerde=this.physics.add.sprite(400,700,'animacionVerde')
             PlayerVerde.body.allowGravity=false;

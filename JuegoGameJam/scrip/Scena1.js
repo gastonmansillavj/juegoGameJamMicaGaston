@@ -529,7 +529,7 @@ if (PlayerVerdeAnim.flipX == false) {
 
            if (Phaser.Math.Distance.BetweenPoints(PlayerRojo, PlayerVerde)<=250){
                 PlayerRojo.setVelocityX (0)
-                this.tomaDecisionCaminar(Phaser.Math.Between(0,2))
+                this.tomaDecisionCaminar(Phaser.Math.Between(0,1))
                 //// aleatorio entre patada y puño
 
                 //this.tomaDecisionCaminar(0)
