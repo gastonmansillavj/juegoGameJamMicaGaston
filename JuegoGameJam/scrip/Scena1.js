@@ -20,7 +20,7 @@ class Scena1 extends Phaser.Scene {
     this.load.image('DestruirD', 'src/assets/imagenes/teVoyADestruir.png');
     this.load.image('fondo', 'src/assets/imagenes/fondo.png');
     //this.load.image('PlayerVerdeAnimaciones', 'src/assets/imagenes/playerVerde/prueba1.png');
-    this.load.image('PlayerRojo', 'src/assets/imagenes/playerRojo.png');
+    this.load.image('PlayerRojo', 'src/assets/imagenes/PlayerRojo.png');
     //this.load.image('PlayerRojoAnimaciones', 'src/assets/imagenes/playerRojo/SpriteSheetRojo.png');
 
  
