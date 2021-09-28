@@ -931,7 +931,7 @@ colisionPuño (player,enemigo){
     if(PlayerVerde.estado!='RecibeGolpe'&& PlayerRojo.estado=='punch'){
         PlayerVerde.estado ='RecibeGolpe'
         TiempoMiliseg=this.time.now+3000
-        PlayerVerde.vida=PlayerVerde.vida-50;
+        PlayerVerde.vida=PlayerVerde.vida-20;
         Sonidos.GolpeAcertado.play()
         enemigo.disableBody(true, true);
     
