@@ -529,7 +529,7 @@ if (PlayerVerdeAnim.flipX == false) {
 
            if (Phaser.Math.Distance.BetweenPoints(PlayerRojo, PlayerVerde)<=250){
                 PlayerRojo.setVelocityX (0)
-                this.tomaDecisionCaminar(Phaser.Math.Between(0,1))
+                this.tomaDecisionCaminar(Phaser.Math.Between(0,2))
                 //// aleatorio entre patada y puño
 
                 //this.tomaDecisionCaminar(0)
@@ -819,17 +819,19 @@ PlayerRojo.estado='hablar'
 tomaDecisionCaminar(resultado) {
 
     if (0 == resultado){
-
-    PlayerRojo.estado='punch'
-    PlayerRojo.mano = Phaser.Math.Between(0,1)
-   // tiempoEspera=tiempoDeJuego+3
-    TiempoMiliseg=this.time.now+800
+//aca 
+PlayerRojo.estado='patada'
+// tiempoEspera=tiempoDeJuego+3
+ TiempoMiliseg=this.time.now+800
 
 
     }
     else{
 
-    PlayerRojo.estado='patada'
+
+
+    PlayerRojo.estado='punch'
+    PlayerRojo.mano = Phaser.Math.Between(0,1)
    // tiempoEspera=tiempoDeJuego+3
     TiempoMiliseg=this.time.now+800
 
